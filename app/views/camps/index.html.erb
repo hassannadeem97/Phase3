@@ -1,10 +1,20 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Camps</h1>
+<div id="notice" class="alert alert-primary alert-dismissible fade show" role="alert">
+  <strong><%= notice %> Enjoy your stay.</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 
-<table>
+<h1>Camps </h1>
+<br/>
+
+<h3>Add a <%= link_to 'New Camp', new_camp_path %></h3>
+
+<table class="table table-dark">
   <thead>
     <tr>
+      <th scope="col">#ID</th>
       <th>Curriculum</th>
       <th>Location</th>
       <th>Cost</th>
@@ -18,8 +28,11 @@
   </thead>
 
   <tbody>
+    
     <% @camps.each do |camp| %>
+    
       <tr>
+        <td><%= camp.id  %></td>
         <td><%= camp.curriculum_id %></td>
         <td><%= camp.location_id %></td>
         <td><%= camp.cost %></td>
@@ -28,9 +41,11 @@
         <td><%= camp.time_slot %></td>
         <td><%= camp.max_students %></td>
         <td><%= camp.active %></td>
-        <td><%= link_to 'Show', camp %></td>
-        <td><%= link_to 'Edit', edit_camp_path(camp) %></td>
-        <td><%= link_to 'Destroy', camp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', camp, :class=> "btn btn-light" %></td>
+        <td><%= link_to 'Edit', edit_camp_path(camp), :class=> "btn btn-light" %></td>
+        <td><%= link_to 'Destroy', camp, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-danger" %></td>
+    
+        
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +53,4 @@
 
 <br>
 
-<%= link_to 'New Camp', new_camp_path %>
+

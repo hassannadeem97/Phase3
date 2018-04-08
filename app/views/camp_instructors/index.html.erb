@@ -1,10 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div id="notice" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong><%= notice %> Enjoy your stay.</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 
 <h1>Camp Instructors</h1>
+<br>
 
-<table>
+<h3> Add a <%= link_to 'New Camp Instructor', new_camp_instructor_path %></h3>
+
+<table class="table table-dark">
   <thead>
     <tr>
+      <th scope="col">#ID</th>
       <th>Camp</th>
       <th>Instructor</th>
       <th colspan="3"></th>
@@ -14,16 +23,15 @@
   <tbody>
     <% @camp_instructors.each do |camp_instructor| %>
       <tr>
+        <td><%= camp_instructor.id %></td>
         <td><%= camp_instructor.camp_id %></td>
         <td><%= camp_instructor.instructor_id %></td>
-        <td><%= link_to 'Show', camp_instructor %></td>
-        <td><%= link_to 'Edit', edit_camp_instructor_path(camp_instructor) %></td>
-        <td><%= link_to 'Destroy', camp_instructor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', camp_instructor, :class=> "btn btn-light" %></td>
+        <td><%= link_to 'Edit', edit_camp_instructor_path(camp_instructor), :class=> "btn btn-light" %></td>
+        <td><%= link_to 'Destroy', camp_instructor, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Camp Instructor', new_camp_instructor_path %>
