@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div class="card">
+    <h3 class="card-header primary-color white-text">Camp Information</h3>
+    <div class="card-body">
+        <p>
   <strong>Curriculum:</strong>
   <%= @camp.curriculum_id %>
 </p>
@@ -39,6 +42,11 @@
   <strong>Active:</strong>
   <%= @camp.active %>
 </p>
+        
+    </div>
+</div>
 
-<%= link_to 'Edit', edit_camp_path(@camp) %> |
-<%= link_to 'Back', camps_path %>
+
+<br/>
+<h3><%= link_to 'Edit', edit_camp_path(@camp) %> Camp |
+Go <%= link_to 'Back', camps_path %></h3>

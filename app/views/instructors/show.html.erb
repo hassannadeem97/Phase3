@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<div class="card">
+    <h3 class="card-header primary-color white-text">Instructor Information</h3>
+    <div class="card-body">
+    
+
 <p>
   <strong>First name:</strong>
   <%= @instructor.first_name %>
@@ -29,6 +34,10 @@
   <strong>Active:</strong>
   <%= @instructor.active %>
 </p>
+</div>
+</div>
 
-<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
-<%= link_to 'Back', instructors_path %>
+<br/>
+
+<h3><%= link_to 'Edit', edit_instructor_path(@instructor) %> Instructor |
+Go <%= link_to 'Back', instructors_path %></h3>

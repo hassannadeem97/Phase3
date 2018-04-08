@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<div class="card">
+    <h3 class="card-header primary-color white-text">Featured</h3>
+    <div class="card-body">
+        
+    
 <p>
   <strong>Name:</strong>
   <%= @location.name %>
@@ -39,6 +43,9 @@
   <strong>Active:</strong>
   <%= @location.active %>
 </p>
+</div>
+</div>
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<h3><%= link_to 'Edit', edit_location_path(@location) %> Location |
+Go <%= link_to 'Back', locations_path %></h3>
+
