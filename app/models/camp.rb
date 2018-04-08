@@ -60,9 +60,11 @@ class Camp < ApplicationRecord
 
   def max_students_not_greater_than_capacity
     return true if self.max_students.nil? || self.location_id.nil?
+    if self.location != nil
     if self.max_students > self.location.max_capacity
       errors.add(:max_students, "is greater than the location capacity")
     end
+    end 
   end
 
   def remove_instructors_from_inactive_camp
