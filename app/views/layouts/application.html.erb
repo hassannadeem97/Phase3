@@ -6,23 +6,29 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href=# >Chess Camp</a>
+  <a class="navbar-brand" href="/pages/home" >Chess Camp</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="/pages/about">About the Chess Camp</a>
       </li>
-      
-      
+      <li class="nav-item">
+        <a class="nav-link" href="/pages/privacy_policy">Privacy Policy</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/pages/contact">Contact Us</a>
+      </li>
     </ul>
   </div>
+  
 </nav>
     
     <div class="container">
@@ -38,10 +44,15 @@
        <h3> Quick Links </h3>
     <h5>
       <%= link_to 'All Camp Instructors', camp_instructors_path, :class => "collection-item" %><br/>
+      <hr>
       <%= link_to 'All Camps', camps_path, :class => "collection-item" %><br/>
+      <hr>
       <%= link_to 'All Curriculums', curriculums_path, :class => "collection-item" %><br/>
+      <hr>
       <%= link_to 'All Locations', locations_path, :class => "collection-item" %><br/>
+      <hr>
       <%= link_to 'All Instructors', instructors_path, :class => "collection-item" %></h5>
+      <hr>
   
   
 
@@ -53,7 +64,8 @@
       
     </div>
     <div class="footer">
-  <p>@Webmaster:Hassan Nadeem</p>
+      
+  <p>© 2018 Copyright<a href="/pages/webmaster_info"> Webmaster: Hassan Nadeem</a></p>
 </div
   </body>
   
