@@ -16,7 +16,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
       <li class="nav-item">
         <a class="nav-link" href="/pages/about">About the Chess Camp</a>
       </li>
@@ -30,39 +30,46 @@
   </div>
   
 </nav>
-    
-    <div class="container">
-      <div class="row">
-        
-    <div class="col-sm-10">
-      <%= yield %>
-    </div>
-    
+
+<div class="container-fluid text-center">    
+  <div class="row content">
     <div class="col-sm-2">
-      
-      <div class="sidebar">
-       <h3> Quick Links </h3>
+       <div class="sidebar">
+       <h3> Quick Links </h3><br/>
     <h5>
-      <%= link_to 'All Camp Instructors', camp_instructors_path, :class => "collection-item" %><br/>
+      <%= link_to 'Camp Instructors', camp_instructors_path, :class => "collection-item" %><br/>
       <hr>
-      <%= link_to 'All Camps', camps_path, :class => "collection-item" %><br/>
+      <%= link_to 'Camps', camps_path, :class => "collection-item" %><br/>
       <hr>
-      <%= link_to 'All Curriculums', curriculums_path, :class => "collection-item" %><br/>
+      <%= link_to 'Curriculums', curriculums_path, :class => "collection-item" %><br/>
       <hr>
-      <%= link_to 'All Locations', locations_path, :class => "collection-item" %><br/>
+      <%= link_to 'Locations', locations_path, :class => "collection-item" %><br/>
       <hr>
-      <%= link_to 'All Instructors', instructors_path, :class => "collection-item" %></h5>
+      <%= link_to 'Instructors', instructors_path, :class => "collection-item" %></h5>
       <hr>
   
   
 
       </div>
-      
     </div>
-    
+   
+    <div class="col-sm-8 text-left"> 
+	<%= yield %>
+	
+    </div>
+    <div class="col-sm-2 ">
+     
+    </div>
   </div>
+</div>
+    
+  
+    
+    
+    
+ 
       
-    </div>
+    
     <div class="footer">
       
   <p>© 2018 Copyright<a href="/pages/webmaster_info"> Webmaster: Hassan Nadeem</a></p>
