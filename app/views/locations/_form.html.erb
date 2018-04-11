@@ -1,62 +1,25 @@
-<%= form_with(model: location, local: true) do |form| %>
-  <% if location.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
-
-      <ul>
-      <% location.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :location_name, :class => "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :street_1 %>
-    <%= form.text_field :street_1, id: :location_street_1, :class => "form-control" %>
-  </div>
-  
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <%= form.label :street_2 %>
-      <%= form.text_field :street_2, id: :location_street_2, :class => "form-control" %>
-    </div>
-    <div class="form-group col-md-6">
-      <%= form.label :city %>
-      <%= form.text_field :city, id: :location_city, :class => "form-control" %>
+<%= simple_form_for(@location) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="form-inputs">
+      <%= f.input :name, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%= f.input :street_1, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%= f.input :street_2, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%= f.input :city, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%= f.input :state, label_html: { class: 'active' }, collection: Location::STATES_LIST, include_blank: true, :input_html => { :class => 'form-control' } %>
+      <%= f.input :zip, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%= f.input :max_capacity, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%= f.input :active %>
     </div>
   </div>
-
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <%= form.label :state %>
-      <%= form.text_field :state, id: :location_state, :class => "form-control" %>
+  <div class="row">
+    <div class="form-actions col s8">
+      <%= f.button :submit %>
     </div>
-    <div class="form-group col-md-6">
-      <%= form.label :zip %>
-      <%= form.text_field :zip, id: :location_zip, :class => "form-control" %>
-    </div>
+    
   </div>
-
-
-  <div class="form-group">
-    <%= form.label :max_capacity %>
-    <%= form.number_field :max_capacity, id: :location_max_capacity, :class => "form-control" %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active, id: :location_active %>
-  </div>
-
   <br/>
-
-  <div class="actions">
-    <%= form.submit :Submit, class: 'btn btn-success'%>
-  </div>
+    <br/>
 <% end %>
+
+  

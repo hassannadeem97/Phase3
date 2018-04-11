@@ -1,54 +1,22 @@
-<%= form_with(model: instructor, local: true) do |form| %>
-  <% if instructor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(instructor.errors.count, "error") %> prohibited this instructor from being saved:</h2>
-
-      <ul>
-      <% instructor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <%= form.label :first_name %>
-      <%= form.text_field :first_name, id: :instructor_first_name, :class => "form-control" %>
-    </div>
-    <div class="form-group col-md-6">
-      <%= form.label :last_name %>
-      <%= form.text_field :last_name, id: :instructor_last_name, :class => "form-control" %>
+<%= simple_form_for(@instructor) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="form-inputs">
+      <%= f.input :first_name, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%= f.input :last_name, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%= f.input :bio, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%= f.input :email, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%= f.input :phone, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %>
+      <%# f.input :user_id, label_html: { class: 'active' } %>
+      <%= f.input :active %>
     </div>
   </div>
-
-  <div class="form-group">
-    <%= form.label :bio %>
-    <%= form.text_area :bio, id: :instructor_bio, :class => "form-control" %>
-  </div>
-  
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <%= form.label :email %>
-      <%= form.text_field :email, id: :instructor_email, :class => "form-control" %>
-    </div>
-    <div class="form-group col-md-6">
-      <%= form.label :phone %>
-      <%= form.text_field :phone, id: :instructor_phone, :class => "form-control" %>
+  <div class="row">
+    <div class="form-actions col s8">
+      <%= f.button :submit %>
     </div>
   </div>
-
-
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active, id: :instructor_active %>
-  </div>
-
-<br/>
-
-  <div class="actions">
-    <%= form.submit :Submit, class: 'btn btn-success' %>
-  </div>
-  
-  
 <% end %>
+
+
+

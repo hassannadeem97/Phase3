@@ -1,65 +1,31 @@
-<%= form_with(model: camp, local: true) do |form| %>
-  <% if camp.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(camp.errors.count, "error") %> prohibited this camp from being saved:</h2>
-
-      <ul>
-      <% camp.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <%= form.label :curriculum_id %>
-      <%= form.number_field :curriculum_id, id: :camp_curriculum_id, :class => "form-control" %>
-    </div>
-    
-    <div class="form-group col-md-6">
-			    <%= form.label :location_id %><br />
-			    <%= form.collection_select :location_id, Location.alphabetical, :id, :name,:prompt => "Select ...", class: "form-cont" %>
-		</div>
-   
-  </div>
-  
-   <div class="form-row">
-    <div class="form-group col-md-4">
-      <%= form.label :cost %>
-      <%= form.text_field :cost, id: :camp_cost, :class => "form-control" %>
-    </div>
-    <div class="form-group col-md-4">
-      <%= form.label :time_slot %>
-     <%= form.text_field :time_slot, id: :camp_time_slot, :class => "form-control" %>
-    </div>
-    <div class="form-group col-md-4">
-      <%= form.label :max_students %>
-      <%= form.number_field :max_students, id: :camp_max_students, :class => "form-control" %>
+<%= simple_form_for(@camp) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="form-inputs">
+      <%= f.input :location_id, collection: Location.alphabetical.active.to_a, include_blank: true, :input_html => { :class => 'form-control' }  %><br/>
+      <%= f.input :curriculum_id, collection: Curriculum.alphabetical.active.to_a, include_blank: true, :input_html => { :class => 'form-control' }%><br/>
+      <%= f.input :cost, label_html: { class: 'active' }, :input_html => { :class => 'form-control' } %><br/>
+      <%= f.input :time_slot, collection: [["Morning","am"],["Afternoon","pm"]], include_blank: true, :input_html => { :class => 'form-control' }  %><br/>
+      <%= f.input :start_date, label_html: { class: 'active'}, :input_html => { :class => 'form-control' }  %><br/>
+      <%= f.input :end_date, label_html: { class: 'active' }, :input_html => { :class => 'form-control' }  %><br/>
+      <%= f.input :max_students, label_html: { class: 'active' }, :input_html => { :class => 'form-control' }  %><br/>
+      <%= f.input :active %>
+	  <%# f.input :active, as: :radio_buttons %>
     </div>
   </div>
-
-
-    <div class="form-row">
-  <div class="form-group col-md-4">
-      <%= form.label :start_date %>
-      <%= form.date_select :start_date, id: :camp_start_date, :class => "form-control" %>
+  <br/>
+  <div class="row">
+    <div class="form-actions col s8">
+      <%= f.button :submit %>
     </div>
-    <div class="form-group col-md-4">
-      <%= form.label :end_date %>
-    <%= form.date_select :end_date, id: :camp_end_date, :class => "form-control" %>
-    </div>
-    </div>
-
-  
-
-
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active, id: :camp_active %>
   </div>
-<br/>
-  <div class="actions">
-    <%= form.submit :Submit, class: 'btn btn-success' %>
-  </div>
+  <br/>
+  <br/>
 <% end %>
+
+
+  <!--times = @camp.time_slot == "am" ? [["Morning", "am"], ["Afternoon", "pm"]] : [["Afternoon", "pm"], ["Morning", "am"]]
+      <%# f.select :time_slot, times, :prompt => "Select Time of Day..." %>-->
+
+      
+      

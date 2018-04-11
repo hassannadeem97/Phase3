@@ -1,0 +1,18 @@
+
+
+<div class="card-content white-text">
+    <div class="card">
+    <h3 class="card-header primary-color white-text">Other Instructors</h3>
+    <div class="card-body">
+      <% if @other_instructors.empty? %>
+      <p>No other instructors assigned at this time</p>
+    <% else %>
+      <ul>
+        <% for instructor in @other_instructors %>
+          <li><%= link_to instructor.proper_name, instructor_path(instructor) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+        
+    </div>
+</div>

@@ -1,58 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<div class="card">
-    <h3 class="card-header primary-color white-text">Camp Details</h3>
-    <div class="card-body">
-        <p>
-  <strong>Curriculum:</strong>
-  <%= @camp.curriculum.name %>
-</p>
-
-<strong>Camp Information:</strong>
-  <%= @camp.curriculum.description %>
-</p>
-
-
-<p>
-  <strong>Location:</strong>
-  <%= @camp.location.name %>
-</p>
-
-<p>
-  <strong>Cost:</strong>
-  $<%= "%.2f" % @camp.cost %>
-</p>
-
-<p>
-  <strong>Start date - End date:</strong>
-  <%= @camp.start_date.strftime("%m/%d/%y") %> - <%= @camp.end_date.strftime("%m/%d/%y") %>
-</p>
-
-
-<p>
-  <strong>Time slot:</strong>
-  <%= @camp.day_time(@camp.time_slot) %>
-</p>
-
-<p>
-  <strong>Max students:</strong>
-  <%= @camp.max_students %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @camp.active?(@camp.active) %>
-</p>
-
-<strong>Camp Instrcutors:</strong>
-  <%= @camp.instructors.all.map {|i| i.proper_name}%>
-  
-</p>
-        
-    </div>
+<div class="row">
+  <div class="col s7">
+    <%= render :partial => "camp_details" %>
+  </div>
+  <div class="col s5">
+    <%= render :partial => "camp_instructors"%>
+    <%# render :partial => "camp_students"%>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <%= render :partial => "partials/object_options", locals: {model_name: "camp", object: @camp} %>
+  </div>
 </div>
 
-
-<br/>
-<h3><%= link_to 'Edit', edit_camp_path(@camp) %> Camp |
-Go <%= link_to 'Back', camps_path %></h3>

@@ -1,43 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<div class="card">
-    <h3 class="card-header primary-color white-text">Instructor Information</h3>
-    <div class="card-body">
+<div class="row">
+  <div class="col s5">
+    <%= render :partial => "instructor_details" %>
+    <%= render :partial => "partials/object_options", locals: {model_name: "instructor", object: @instructor} %>
+  </div>
+  <div class="col s7">
+    <%= render :partial => "partials/camps_list", locals: {camps: @upcoming_camps, state: "Upcoming"} %>
+    <%= render :partial => "partials/camps_list", locals: {camps: @past_camps, state: "Past"} unless @past_camps.empty? %>
     
-
-<p>
-  <strong>First name:</strong>
-  <%= @instructor.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @instructor.last_name %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @instructor.bio %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @instructor.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @instructor.phone %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @instructor.active %>
-</p>
-</div>
+  </div>
 </div>
 
-<br/>
 
-<h3><%= link_to 'Edit', edit_instructor_path(@instructor) %> Instructor |
-Go <%= link_to 'Back', instructors_path %></h3>

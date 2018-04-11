@@ -1,0 +1,26 @@
+
+
+
+<div class="card-content white-text">
+    <div class="card">
+    <h3 class="card-header primary-color white-text"><%= @location.name %></span></h3>
+    <div class="card-body">
+
+
+<strong>Address:</strong></br>
+
+  <%= render partial: "partials/address_info", locals: {location: @location}  %>
+
+<p>
+  <strong>Maximum Capacity:</strong>
+  <%= @location.max_capacity %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @location.active ? "Yes" : "No" %>
+</p>
+  </div>
+        
+    </div>
+</div>

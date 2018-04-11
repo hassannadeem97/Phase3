@@ -1,7 +1,11 @@
-<h1>Editing Camp</h1>
-
-<%= render 'form', camp: @camp %> 
-
-<br/>
-
-<h3> <%= link_to 'Show', @camp %> Record | Go <%= link_to 'Back', camps_path %> </h3>
+<div class="row">
+  <div class="field col s12">
+    <h1>Editing Camp</h1>
+    <%= render 'form', camp: @camp %>
+    <div class="row">
+      <div class="field col s12">
+        <%= link_to 'Show', @camp, :class=>"btn waves-effect waves-light" %>
+      </div>
+    </div>
+  </div>
+</div>

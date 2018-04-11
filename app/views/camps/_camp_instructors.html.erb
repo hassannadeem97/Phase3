@@ -1,0 +1,33 @@
+<div class="card indigo lighten-2">
+  
+  <div class="card-content white-text">
+    <div class="card">
+    <h3 class="card-header primary-color white-text">Camp Instructors</h3>
+    <div class="card-body">
+      <% if @instructors.empty? %>
+		<p>No instructors at this time</p>
+	  <% else %>
+      <ul>
+        <% @instructors.each do |i| %>
+          <li>
+            <%= link_to(camp_instructor_path(id: camp_instructor_id_for(@camp, i)), method: :delete, class: 'remove') do %>
+              x&nbsp;&nbsp;
+            <% end %>
+            <%= link_to i.proper_name, instructor_path(i) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+        
+    </div>
+</div>
+
+ <div class="card-action">
+  &nbsp;  <%= link_to "Add a new instructor", new_camp_instructor_path(camp_id: @camp.id) %>
+    </div>
+  
+  
+</div>
+
+

@@ -1,23 +1,19 @@
-<div id="notice" class="alert alert-info alert-dismissible fade show" role="alert">
-  <strong><%= notice %> Enjoy your stay.</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+<h5>Add a <%= link_to 'New curriculum', new_curriculum_path %></h5><br/>
 
-<h1>Curriculums</h1>
-<br>
+<p id="notice"><%= notice %></p>
 
-<h3>Add a <%= link_to 'New Curriculum', new_curriculum_path %></h3>
-<table class="table table-dark">
-  <div class="table-responsive">
+<% if @curriculums.empty? %>
+  <h3>There are no curriculums in the system at this time</h3>
+<% else %>
+  <h3>Curriculums</h3><br/>
+
+  <table class="table table-dark">
+    <div class="table-responsive">
   <thead>
     <tr>
-      <th scope="col">#ID</th>
       <th>Name</th>
-      <th>Rating</th>
-      <th>Description</th>
-      <th>Active</th>
+      <th>Ratings</th>
+      <th>Times Used</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,18 +21,14 @@
   <tbody>
     <% @curriculums.each do |curriculum| %>
       <tr>
-        <td><%= curriculum.id %></td>
-        <td><%= curriculum.name %></td>
-        <td><%= curriculum.min_rating %> - <%= curriculum.max_rating %></td>
-        <td><%= curriculum.description %></td>
-        <td><%= curriculum.active %></td>
-        <td><%= link_to 'Show', curriculum, :class=> "btn btn-light" %></td>
-        <td><%= link_to 'Edit', edit_curriculum_path(curriculum), :class=> "btn btn-light" %></td>
-        <td><%= link_to 'Destroy', curriculum, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-danger" %></td>
+        <td><%= link_to curriculum.name, curriculum, :class=>"btn btn-light" %></td>
+        <td><%= curriculum.min_rating == 0 ? "Unrated" : curriculum.min_rating %> - <%= curriculum.max_rating %></td>
+        <td><%= Camp.for_curriculum(curriculum.id).size %></td>
+        <td><%= link_to 'Edit', edit_curriculum_path(curriculum), :class=>"btn btn-light" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
-
+    <% end %>
 
