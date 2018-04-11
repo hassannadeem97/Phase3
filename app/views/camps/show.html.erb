@@ -1,36 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <div class="card">
-    <h3 class="card-header primary-color white-text">Camp Information</h3>
+    <h3 class="card-header primary-color white-text">Camp Details</h3>
     <div class="card-body">
         <p>
   <strong>Curriculum:</strong>
-  <%= @camp.curriculum_id %>
+  <%= @camp.curriculum.name %>
 </p>
+
+<strong>Camp Information:</strong>
+  <%= @camp.curriculum.description %>
+</p>
+
 
 <p>
   <strong>Location:</strong>
-  <%= @camp.location_id %>
+  <%= @camp.location.name %>
 </p>
 
 <p>
   <strong>Cost:</strong>
-  <%= @camp.cost %>
+  $<%= "%.2f" % @camp.cost %>
 </p>
 
 <p>
-  <strong>Start date:</strong>
-  <%= @camp.start_date %>
+  <strong>Start date - End date:</strong>
+  <%= @camp.start_date.strftime("%m/%d/%y") %> - <%= @camp.end_date.strftime("%m/%d/%y") %>
 </p>
 
-<p>
-  <strong>End date:</strong>
-  <%= @camp.end_date %>
-</p>
 
 <p>
   <strong>Time slot:</strong>
-  <%= @camp.time_slot %>
+  <%= @camp.day_time(@camp.time_slot) %>
 </p>
 
 <p>
@@ -40,7 +41,12 @@
 
 <p>
   <strong>Active:</strong>
-  <%= @camp.active %>
+  <%= @camp.active?(@camp.active) %>
+</p>
+
+<strong>Camp Instrcutors:</strong>
+  <%= @camp.instructors.all.map {|i| i.proper_name}%>
+  
 </p>
         
     </div>

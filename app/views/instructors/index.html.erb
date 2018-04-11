@@ -15,8 +15,7 @@
   <thead>
     <tr>
       <th scope="col">#ID</th>
-      <th>First name</th>
-      <th>Last name</th>
+      <th>Full Name</th>
       <th>Bio</th>
       <th>Email</th>
       <th>Phone</th>
@@ -29,8 +28,7 @@
     <% @instructors.each do |instructor| %>
       <tr>
         <td><%= instructor.id %></td>
-        <td><%= instructor.first_name %></td>
-        <td><%= instructor.last_name %></td>
+        <td><%= instructor.name %></td>
         <td><%= instructor.bio %></td>
         <td><%= instructor.email %></td>
         <td><%= instructor.phone %></td>

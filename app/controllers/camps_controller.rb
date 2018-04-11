@@ -5,6 +5,7 @@ class CampsController < ApplicationController
   # GET /camps.json
   def index
     @camps = Camp.all
+    @count = count_record
   end
 
   # GET /camps/1
@@ -71,4 +72,12 @@ class CampsController < ApplicationController
     def camp_params
       params.require(:camp).permit(:curriculum_id, :location_id, :cost, :start_date, :end_date, :time_slot, :max_students, :active)
     end
+    
+    def count_record
+      if Camp.all.length == 0
+        "There are no camps in the system at this time. "
+      else 
+        ""
+      end 
+    end 
 end

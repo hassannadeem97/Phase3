@@ -186,6 +186,8 @@ class CampTest < ActiveSupport::TestCase
       delete_camp_instructors
       delete_instructors
     end
+    
+    
 
   end
 end

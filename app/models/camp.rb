@@ -32,6 +32,8 @@ class Camp < ApplicationRecord
   def name
     self.curriculum.name
   end
+  
+  
 
   def already_exists?
     Camp.where(time_slot: self.time_slot, start_date: self.start_date, location_id: self.location_id).size == 1
@@ -73,4 +75,21 @@ class Camp < ApplicationRecord
       self.camp_instructors.each{|ci| ci.destroy}
     end
   end
+  
+  def day_time(time_slot)
+    if time_slot == "am"
+      "Morning"
+    else 
+      "Afternoon"
+    end 
+  end 
+  
+  def active?(active)
+    if active == true
+      "This camp is currently Active"
+    else 
+      "This camp is currently inactive"
+    end 
+  end 
+  
 end

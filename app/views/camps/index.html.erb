@@ -8,22 +8,19 @@
 
 <h1>Camps </h1>
 <br/>
-
-<h3>Add a <%= link_to 'New Camp', new_camp_path %></h3>
-
+<h3><%=@count%> Add a <%= link_to 'New Camp', new_camp_path %></h3>
+<% if @count == "" %>
 <table class="table table-dark">
   <div class="table-responsive">
   <thead>
     <tr>
-      <th scope="col">#ID</th>
-      <th>Curriculum</th>
+      <th>Curriculum Name</th>
       <th>Location</th>
       <th>Cost</th>
       <th>Start date</th>
       <th>End date</th>
       <th>Time slot</th>
-      <th>Max students</th>
-      <th>Active</th>
+      <th>Max Students</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -33,18 +30,15 @@
     <% @camps.each do |camp| %>
     
       <tr>
-        <td><%= camp.id  %></td>
-        <td><%= camp.curriculum_id %></td>
+        <td><%= link_to camp.curriculum.name, camp, :class=> "btn btn-light" %></td>
         <td><%= camp.location_id %></td>
         <td><%= camp.cost %></td>
-        <td><%= camp.start_date %></td>
-        <td><%= camp.end_date %></td>
-        <td><%= camp.time_slot %></td>
+        <td><%= camp.start_date.strftime("%m/%d/%y")%></td>
+        <td><%= camp.end_date.strftime("%m/%d/%y") %></td>
+        <td><%= camp.day_time(camp.time_slot) %></td>
         <td><%= camp.max_students %></td>
-        <td><%= camp.active %></td>
-        <td><%= link_to 'Show', camp, :class=> "btn btn-light" %></td>
         <td><%= link_to 'Edit', edit_camp_path(camp), :class=> "btn btn-light" %></td>
-        <td><%= link_to 'Destroy', camp, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-danger" %></td>
+        
     
         
       </tr>
@@ -53,5 +47,6 @@
 </table>
 </div>
 <br>
+<% end %>
 
 

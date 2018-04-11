@@ -38,4 +38,6 @@ class CampInstructor < ApplicationRecord
     errors.add(:camp, "is not currently active") unless self.camp.active
   end
   
+  
+  
 end
