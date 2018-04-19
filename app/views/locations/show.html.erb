@@ -1,10 +1,11 @@
 <div class="row">
   <div class="col s5">
     <%= render :partial => "location_details" %>
+    <%= render :partial => "partials/object_options", locals: {model_name: "location", object: @location} %>
   </div>
   <div class="col s7">
     <%= render :partial => "partials/camps_list", locals: {camps: @upcoming_camps_at_location, state: "Upcoming"} %>
-    <%= render :partial => "partials/object_options", locals: {model_name: "location", object: @location} %>
+    
   </div>
 </div>
 
